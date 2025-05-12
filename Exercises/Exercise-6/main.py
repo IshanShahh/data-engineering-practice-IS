@@ -17,7 +17,7 @@ def main():
             # print(content)
             for _ in content:
                 if _.endswith('.csv'):
-                    with f.open(,'r') as w:
+                    with f.open(_,'r') as w:
                         data = spark.read.csv(w)
                         print(data)
 
