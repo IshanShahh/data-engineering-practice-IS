@@ -14,10 +14,13 @@ def main():
         full_path = os.path.join(path,file)
         with zipfile.ZipFile(full_path,'r') as f:
             content = f.namelist()
-            print(content)
+            # print(content)
             for _ in content:
                 if _.endswith('.csv'):
-                    print(_)
+                    with f.open(,'r') as w:
+                        data = spark.read.csv(w)
+                        print(data)
+
                 # read = f.read(_['start_time'])
                 # print(read)
             # for _ in content:
